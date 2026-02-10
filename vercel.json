@@ -1,6 +1,3 @@
 {
-  "version": 2,
-  "name": "daily-task-tracker",
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist"
+  "buildCommand": "npm run build"
 }
