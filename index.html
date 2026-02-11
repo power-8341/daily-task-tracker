@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI代理团队成长追踪系统 V2.1</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f5; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    
+    .header { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+      color: white; 
+      padding: 30px; 
+      border-radius: 16px; 
+      margin-bottom: 20px;
+    }
+    .header h1 { font-size: 28px; margin-bottom: 10px; }
+    .header p { opacity: 0.9; }
+    
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px; }
+    .stat-card { background: white; padding: 20px; border-radius: 12px; text-align: center; }
+    .stat-card .number { font-size: 28px; font-weight: bold; color: #0369a1; }
+    .stat-card .label { font-size: 12px; color: #666; margin-top: 5px; }
+    
+    .agents-section { background: white; padding: 24px; border-radius: 16px; margin-bottom: 20px; }
+    .agents-section h2 { margin-bottom: 16px; }
+    .agents-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+    
+    .agent-card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 15px; transition: transform 0.2s; }
+    .agent-card:hover { transform: translateY(-5px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .agent-card.youzi { background: #f3e8ff; }
+    
+    .agent-avatar { 
+      width: 60px; height: 60px; border-radius: 12px; 
+      display: flex; align-items: center; justify-content: center; 
+      font-size: 28px; margin-bottom: 10px;
+    }
+    .power { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+    .daima { background: linear-gradient(135deg, #22c55e, #15803d); }
+    .meihua { background: linear-gradient(135deg, #ec4899, #be185d); }
+    .ceshi { background: linear-gradient(135deg, #f97316, #c2410c); }
+    .youzi { background: linear-gradient(135deg, #a855f7, #7c3aed); }
+    
+    .agent-name { font-weight: 600; font-size: 16px; margin-bottom: 5px; }
+    .agent-role { font-size: 12px; color: #666; margin-bottom: 10px; }
+    .agent-desc { font-size: 11px; color: #888; margin-bottom: 10px; }
+    
+    .skills { margin-top: 10px; }
+    .skills-title { font-size: 11px; color: #666; margin-bottom: 5px; }
+    .skill-item { margin-bottom: 8px; }
+    .skill-header { display: flex; justify-content: space-between; font-size: 11px; }
+    .skill-bar { height: 4px; background: #e5e7eb; border-radius: 2px; margin-top: 2px; }
+    .skill-fill { height: 100%; border-radius: 2px; }
+    .mastered { background: #22c55e; }
+    .practicing { background: #f59e0b; }
+    
+    .tasks-info { margin-top: 10px; padding: 8px; background: #f9fafb; border-radius: 6px; font-size: 11px; }
+    
+    .footer { text-align: center; padding: 20px; color: #666; font-size: 12px; }
+    .footer a { color: #667eea; text-decoration: none; }
+    
+    @media (max-width: 768px) {
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .agents-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>🚀 AI代理团队成长追踪系统 V2.1</h1>
+      <p>5个代理协同工作 | 实时追踪任务进度与技能成长</p>
+      <p style="font-size: 14px; margin-top: 5px;">GitHub Pages 预览版</p>
+    </div>
+    
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat-card">
+        <div class="number">5</div>
+        <div class="label">代理总数</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">65</div>
+        <div class="label">任务总数</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">90%</div>
+        <div class="label">完成率</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">6</div>
+        <div class="label">进行中</div>
+      </div>
+    </div>
+    
+    <!-- Agents -->
+    <div class="agents-section">
+      <h2>👥 代理团队 (5人)</h2>
+      <div class="agents-grid">
+        <!-- Power -->
+        <div class="agent-card">
+          <div class="agent-avatar power">🤖</div>
+          <div class="agent-name">Power</div>
+          <div class="agent-role">协调者</div>
+          <div class="agent-desc">统筹协调所有代理工作</div>
+          <div class="skills">
+            <div class="skills-title">技能: 1个</div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>任务管理</span>
+                <span>9/10</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill mastered" style="width: 90%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="tasks-info">任务: 18/20 完成</div>
+        </div>
+        
+        <!-- 代码哥 -->
+        <div class="agent-card">
+          <div class="agent-avatar daima">👨‍💻</div>
+          <div class="agent-name">代码哥</div>
+          <div class="agent-role">全栈工程师</div>
+          <div class="agent-desc">负责后端开发和部署</div>
+          <div class="skills">
+            <div class="skills-title">技能: 1个</div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>后端开发</span>
+                <span>9/10</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill mastered" style="width: 90%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="tasks-info">任务: 14/15 完成</div>
+        </div>
+        
+        <!-- 美化姐 -->
+        <div class="agent-card">
+          <div class="agent-avatar meihua">🎨</div>
+          <div class="agent-name">美化姐</div>
+          <div class="agent-role">UI设计师</div>
+          <div class="agent-desc">负责界面设计和用户体验</div>
+          <div class="skills">
+            <div class="skills-title">技能: 1个</div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>UI设计</span>
+                <span>9/10</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill mastered" style="width: 90%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="tasks-info">任务: 11/12 完成</div>
+        </div>
+        
+        <!-- 测试哥 -->
+        <div class="agent-card">
+          <div class="agent-avatar ceshi">🧪</div>
+          <div class="agent-name">测试哥</div>
+          <div class="agent-role">QA工程师</div>
+          <div class="agent-desc">负责测试和质量保证</div>
+          <div class="skills">
+            <div class="skills-title">技能: 1个</div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>自动化测试</span>
+                <span>8/10</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-fill practicing" style="width: 80%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="tasks-info">任务: 9/10 完成</div>
+        </div>
+        
+        <!-- 游资哥 -->
+        <div class="agent-card youzi">
+          <div class="agent-avatar youzi">📈</div>
+          <div class="agent-name">游资哥</div>
+          <div class="agent-role">A股游资操盘手</div>
+          <div class="agent-desc">专注短线交易、涨停板战法、题材挖掘、情绪周期判断</div>
+          <div class="skills">
+            <div class="skills-title">技能: 5个</div>
+            <div class="skill-item">
+              <div class="skill-header"><span>首板战法</span><span>9/10</span></div>
+              <div class="skill-bar"><div class="skill-fill mastered" style="width: 90%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header"><span>连板接力</span><span>8/10</span></div>
+              <div class="skill-bar"><div class="skill-fill mastered" style="width: 80%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header"><span>龙头反包</span><span>7/10</span></div>
+              <div class="skill-bar"><div class="skill-fill practicing" style="width: 70%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header"><span>情绪周期</span><span>8/10</span></div>
+              <div class="skill-bar"><div class="skill-fill mastered" style="width: 80%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header"><span>龙虎榜分析</span><span>7/10</span></div>
+              <div class="skill-bar"><div class="skill-fill practicing" style="width: 70%"></div></div>
+            </div>
+          </div>
+          <div class="tasks-info">任务: 7/8 完成</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Updates -->
+    <div class="agents-section" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">
+      <h2>✨ 更新日志</h2>
+      <ul style="padding-left: 20px; line-height: 2;">
+        <li>✅ 新增游资哥代理（A股游资操盘手，5个交易技能）</li>
+        <li>✅ 修复前端硬编码，支持动态代理列表</li>
+        <li>✅ 响应式布局：手机2列/平板3列/桌面5列</li>
+        <li>🎯 技能进度条可视化</li>
+      </ul>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+      <p>GitHub Pages 静态预览版</p>
+      <p>完整功能请部署到服务器</p>
+      <p style="margin-top: 10px;">
+        <a href="https://github.com/power-8341/daily-task-tracker" target="_blank">查看源码 →</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
