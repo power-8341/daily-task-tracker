@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>每日任务追踪 - V2.1 预览</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; background: #f5f5f5; padding: 20px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 16px; margin-bottom: 20px; }
+    .header h1 { margin: 0; font-size: 28px; }
+    .header p { margin: 10px 0 0; opacity: 0.9; }
+    .agents { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-bottom: 30px; }
+    .agent-card { background: white; border-radius: 16px; padding: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.2s; }
+    .agent-card:hover { transform: translateY(-5px); }
+    .agent-avatar { width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 12px; }
+    .agent-name { font-weight: 600; font-size: 16px; margin-bottom: 4px; }
+    .agent-role { font-size: 12px; color: #666; }
+    .status { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 12px; margin-top: 8px; }
+    .status-online { background: #d4edda; color: #155724; }
+    
+    .power { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+    .daima { background: linear-gradient(135deg, #22c55e, #15803d); }
+    .meihua { background: linear-gradient(135deg, #ec4899, #be185d); }
+    .ceshi { background: linear-gradient(135deg, #f97316, #c2410c); }
+    .youzi { background: linear-gradient(135deg, #a855f7, #7c3aed); }
+    
+    .section { background: white; border-radius: 16px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .section h2 { margin: 0 0 16px; font-size: 18px; }
+    .task-list { display: flex; flex-direction: column; gap: 12px; }
+    .task-item { display: flex; align-items: center; gap: 12px; padding: 12px; background: #f8f9fa; border-radius: 12px; }
+    .task-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; }
+    .badge { background: #fef3c7; color: #92400e; padding: 4px 8px; border-radius: 6px; font-size: 11px; }
+    
+    @media (max-width: 1024px) {
+      .agents { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .agents { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🚀 AI代理团队成长追踪系统 V2.1</h1>
+      <p>5个代理协同工作 | 实时追踪任务进度与技能成长</p>
+    </div>
+    
+    <div class="section">
+      <h2>👥 代理团队 (5人)</h2>
+      <div class="agents">
+        <div class="agent-card">
+          <div class="agent-avatar power">🤖</div>
+          <div class="agent-name">Power</div>
+          <div class="agent-role">系统协调者</div>
+          <span class="status status-online">● 在线</span>
+        </div>
+        
+        <div class="agent-card">
+          <div class="agent-avatar daima">👨‍💻</div>
+          <div class="agent-name">代码哥</div>
+          <div class="agent-role">全栈工程师</div>
+          <span class="status status-online">● 在线</span>
+        </div>
+        
+        <div class="agent-card">
+          <div class="agent-avatar meihua">🎨</div>
+          <div class="agent-name">美化姐</div>
+          <div class="agent-role">UI/UX设计师</div>
+          <span class="status status-online">● 在线</span>
+        </div>
+        
+        <div class="agent-card">
+          <div class="agent-avatar ceshi">🧪</div>
+          <div class="agent-name">测试哥</div>
+          <div class="agent-role">QA工程师</div>
+          <span class="status status-online">● 在线</span>
+        </div>
+        
+        <div class="agent-card">
+          <div class="agent-avatar youzi">📈</div>
+          <div class="agent-name">游资哥</div>
+          <div class="agent-role">A股游资操盘手</div>
+          <span class="status status-online">● 在线</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>📊 今日任务概览</h2>
+      <div class="task-list">
+        <div class="task-item">
+          <div class="task-avatar daima">👨‍💻</div>
+          <div style="flex:1">
+            <div style="font-weight:500">添加游资哥到数据库</div>
+            <div style="font-size:12px;color:#666">更新角色和技能数据</div>
+          </div>
+          <span class="badge">✅ 已完成</span>
+        </div>
+        
+        <div class="task-item">
+          <div class="task-avatar daima">👨‍💻</div>
+          <div style="flex:1">
+            <div style="font-weight:500">修复前端硬编码</div>
+            <div style="font-size:12px;color:#666">改为动态获取代理列表</div>
+          </div>
+          <span class="badge">✅ 已完成</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>🎯 系统统计</h2>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+        <div style="text-align:center;padding:16px;background:#f0f9ff;border-radius:12px">
+          <div style="font-size:28px;font-weight:bold;color:#0369a1">5</div>
+          <div style="font-size:12px;color:#666">代理总数</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:#f0fdf4;border-radius:12px">
+          <div style="font-size:28px;font-weight:bold;color:#15803d">18</div>
+          <div style="font-size:12px;color:#666">任务总数</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:#fef3c7;border-radius:12px">
+          <div style="font-size:28px;font-weight:bold;color:#92400e">90%</div>
+          <div style="font-size:12px;color:#666">完成率</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:#f3e8ff;border-radius:12px">
+          <div style="font-size:28px;font-weight:bold;color:#7c3aed">2</div>
+          <div style="font-size:12px;color:#666">进行中</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">
+      <h2>✨ 更新日志</h2>
+      <ul style="margin:0;padding-left:20px;line-height:2">
+        <li>✅ 新增游资哥代理（A股游资操盘手）</li>
+        <li>✅ 修复前端硬编码，支持动态代理列表</li>
+        <li>✅ 构建优化，支持无限代理扩展</li>
+        <li>🎯 响应式布局：手机2列/平板3列/桌面5列</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

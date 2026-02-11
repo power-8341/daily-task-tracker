@@ -1,17 +1,28 @@
 {
   "name": "daily-task-tracker",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:init": "tsx scripts/migrate-data.ts",
+    "db:reset": "tsx -e \"require('./lib/db').resetDatabase()\"",
+    "db:optimize": "tsx scripts/init-performance.ts",
+    "migrate": "tsx scripts/migrate-data.ts",
+    "test": "tsx tests/api-test.ts",
+    "test:api": "tsx tests/api-test.ts"
   },
   "dependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/uuid": "^10.0.0",
+    "better-sqlite3": "^12.6.2",
+    "lucide-react": "^0.563.0",
     "next": "^14.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -22,6 +33,7 @@
     "eslint-config-next": "^14.0.0",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.4.0",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }
